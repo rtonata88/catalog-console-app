@@ -1,3 +1,5 @@
+require 'date'
+
 class Item
     def initialize(id, genre, author, source, label, publish_date, archived = false)
         @id = id
@@ -9,8 +11,10 @@ class Item
         @archived = archived
     end
 
-    def can_be_archived?
-        if @publish_date > 10
+    def self.can_be_archived?
+        publish_date = Date.parse(@publish_date)
+        today = Date.today
+        if today.year - publish_date.year > 10
             return true
         else
             return false
