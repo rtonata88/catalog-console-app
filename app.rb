@@ -1,4 +1,3 @@
-
 class App
   def start_menu
     puts "Please choose an option by entering a number:\n
@@ -15,9 +14,9 @@ class App
     11.- List all authors (e.g. 'Stephen King')
     12.- List all sources (e.g. 'From a friend', 'Online shop')
     13.- Exit "
-   answer = gets.chomp.to_i
-   options(answer)
-  end 
+    answer = gets.chomp.to_i
+    options(answer)
+  end
 
   def options(answer)
     book_option(answer)
@@ -30,57 +29,55 @@ class App
   def book_option(answer)
     case answer
     when 1
-      puts "List all Books"
+      puts 'List all Books'
     when 2
-      puts "Add book option"
+      puts 'Add book option'
     end
   end
-  
+
   def movie_option(answer)
     case answer
     when 3
-      puts "List all movies"
+      puts 'List all movies'
     when 4
-      puts "Add a movie"
+      puts 'Add a movie'
     end
   end
 
   def game_option(answer)
     case answer
     when 5
-      puts "List all games"
+      puts 'List all games'
     when 6
-      puts "Add a game"
+      puts 'Add a game'
     end
   end
 
   def music_option(answer)
     case answer
     when 7
-      puts "List all music albums"
+      puts 'List all music albums'
     when 8
-      puts "Add a music"
+      puts 'Add a music'
     end
   end
 
   def general_option(answer)
     case answer
-    when  9 
+    when 9
       puts "List all genres (e.g 'Comedy', 'Thriller')"
-    when 10 
+    when 10
       puts "List all labels (e.g. 'Gift', 'New')"
-    when 11 
+    when 11
       puts "List all authors (e.g. 'Stephen King')"
-    when 12 
-     puts "List all sources (e.g. 'From a friend', 'Online shop')"
+    when 12
+      puts "List all sources (e.g. 'From a friend', 'Online shop')"
     else
-      "Goodbye"
+      'Goodbye'
     end
+  end
 
-  end 
-
-  def run 
+  def run
     start_menu
-  end 
-
+  end
 end

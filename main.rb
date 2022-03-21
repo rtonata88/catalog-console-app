@@ -3,10 +3,10 @@
 
 require './app'
 class Main
-    def initialize
-        app = App.new
-        app.run
-    end
+  def initialize
+    app = App.new
+    app.run
+  end
 end
 
-Main.new()
+Main.new
