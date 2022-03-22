@@ -1,4 +1,9 @@
+require './Classes/music_album'
 class App
+  def initialize
+    @music_albums = MusicAlbum.read_from_file
+  end
+
   def start_menu
     puts "Please choose an option by entering a number:\n
     1.- List all books
@@ -56,9 +61,9 @@ class App
   def music_option(answer)
     case answer
     when 7
-      puts 'List all music albums'
+      MusicAlbum.list_all
     when 8
-      puts 'Add a music'
+      puts 'Add a music album'
     end
   end
 

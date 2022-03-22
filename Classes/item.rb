@@ -2,8 +2,8 @@ require 'date'
 
 class Item
   attr_accessor :archived
-  # rubocop:enable Metrics/ParameterLists
-  def initialize(id, genre, author, source, label, publish_date, archived: false)
+
+  def initialize(id, publish_date, archived: false)
     @id = id
     @genre = genre
     @author = author
@@ -11,7 +11,6 @@ class Item
     @label = label
     @publish_date = publish_date
     @archived = archived
-    
   end
 
   def can_be_archived?
@@ -25,5 +24,5 @@ class Item
   end
 end
 
-item = Item.new(author: "Richard Chambula")
+item = Item.new(author: 'Richard Chambula')
 puts item.author
