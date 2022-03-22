@@ -1,7 +1,7 @@
 require 'date'
 
 class Item
-  attr_accessor :archived
+  attr_accessor :archived, :label
 
   # rubocop:disable Metrics/ParameterLists
   def initialize(id, genre, author, source, label, publish_date, archived: false)
