@@ -3,8 +3,6 @@ require 'date'
 class Item
   attr_accessor :archived, :label, :author
 
-
-  # rubocop:disable Metrics/ParameterLists
   def initialize(publish_date, archived: false)
     @id = Random.rand(1..1000)
     @genre = ''
@@ -15,9 +13,8 @@ class Item
     @archived = archived
   end
 
-  # rubocop:enable Metrics/ParameterLists
   def can_be_archived?
-    return Date.today - @publish_date > (365*10)
+    Date.today - @publish_date > (365 * 10)
   end
 
   def move_to_archive
