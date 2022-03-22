@@ -1,11 +1,8 @@
 require 'date'
 
 class Item
-<<<<<<< HEAD
-  attr_accessor :archived, :author
-=======
-  attr_accessor :archived, :label
->>>>>>> f213d159998e12576ecc63bd7be36eaa4224fcac
+  attr_accessor :archived, :label, :author
+
 
   # rubocop:disable Metrics/ParameterLists
   def initialize(publish_date, archived: false)
