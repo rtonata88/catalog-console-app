@@ -15,9 +15,3 @@ class Author
     item.author = self
   end
 end
-
-# TEST **** #
-# game1 = Game.new('2000-01-01', true, '2010-01-01')
-# author1 = Author.new('richard', 'tonata')
-# author1.add_item(game1)
-# p game1.author.items

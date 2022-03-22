@@ -15,7 +15,3 @@ class Game < Item
     false
   end
 end
-
-# **TEST**
-# game1 = Game.new('2021-01-01', true, '2020-01-01')
-# p game1.can_be_archived?
