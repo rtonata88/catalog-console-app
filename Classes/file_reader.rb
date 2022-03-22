@@ -2,7 +2,7 @@ require 'json'
 
 # Generic Filereader class to read all files paths passed to it
 class FileReader
-  def initialize(filename, path: '../data/')
+  def initialize(filename, path: './data/')
     @datafile = path + filename
   end
 
