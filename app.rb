@@ -49,14 +49,14 @@ class App
     when 3
       ListCreator.new.list_all('games', @games)
     when 4
-      print "Publish date: "
+      print 'Publish date: '
       publish_date = gets.chomp
-      print "Multiplayer [true/false]: "
+      print 'Multiplayer [true/false]: '
       multiplayer = gets.chomp
-      print "Last played at: "
+      print 'Last played at: '
       last_played_at = gets.chomp
       @games << Game.new(publish_date, multiplayer, last_played_at)
-      puts "Success!"
+      puts 'Success!'
     end
     start_menu
   end

@@ -1,6 +1,4 @@
-# rubocop:disable Metrics/CyclomaticComplexity
 class ListCreator
-
   def books; end
 
   def music_albums(music_albums)
@@ -54,4 +52,3 @@ class ListCreator
     end
   end
 end
-# rubocop:enable Metrics/CyclomaticComplexity
