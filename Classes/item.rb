@@ -3,13 +3,13 @@ require 'date'
 class Item
   attr_accessor :archived
 
-  def initialize(id, publish_date, archived: false)
-    @id = id
-    @genre = genre
-    @author = author
-    @source = source
-    @label = label
-    @publish_date = publish_date
+  def initialize(publish_date, archived: false)
+    @id = Random.rand(1..1000)
+    @genre = ''
+    @author = ''
+    @source = ''
+    @label = ''
+    @publish_date = Date.parse(publish_date)
     @archived = archived
   end
 
@@ -23,6 +23,3 @@ class Item
     @archived = can_be_archived?
   end
 end
-
-item = Item.new(author: 'Richard Chambula')
-puts item.author

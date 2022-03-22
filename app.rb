@@ -1,31 +1,32 @@
 require './Classes/music_album'
+require './Classes/list_creator'
+require './Classes/data'
+
 class App
   def initialize
-    @music_albums = MusicAlbum.read_from_file
+    @music_albums = Data.read_from_file('music_albums.json')
+    @genres = Data.read_from_file('genres.json')
   end
 
   def start_menu
     puts "Please choose an option by entering a number:\n
     1.- List all books
     2.- Add a book
-    3.- List all movies
-    4.- Add a movie
-    5.- List of games
-    6.- Add a game
-    7.- List all music albums
-    8.- Add a music album
-    9.- List all genres (e.g 'Comedy', 'Thriller')
-    10.- List all labels (e.g. 'Gift', 'New')
-    11.- List all authors (e.g. 'Stephen King')
-    12.- List all sources (e.g. 'From a friend', 'Online shop')
-    13.- Exit "
+    3.- List of games
+    4.- Add a game
+    5.- List all music albums
+    6.- Add a music album
+    7.- List all genres (e.g 'Comedy', 'Thriller')
+    8.- List all labels (e.g. 'Gift', 'New')
+    9.- List all authors (e.g. 'Stephen King')
+    10.- List all sources (e.g. 'From a friend', 'Online shop')
+    11.- Exit "
     answer = gets.chomp.to_i
     options(answer)
   end
 
   def options(answer)
     book_option(answer)
-    movie_option(answer)
     game_option(answer)
     music_option(answer)
     general_option(answer)
@@ -40,45 +41,37 @@ class App
     end
   end
 
-  def movie_option(answer)
-    case answer
-    when 3
-      puts 'List all movies'
-    when 4
-      puts 'Add a movie'
-    end
-  end
-
   def game_option(answer)
     case answer
-    when 5
+    when 3
       puts 'List all games'
-    when 6
+    when 4
       puts 'Add a game'
     end
   end
 
   def music_option(answer)
     case answer
-    when 7
-      MusicAlbum.list_all
-    when 8
-      puts 'Add a music album'
+    when 5
+      ListCreator.list_all('music_albums', @music_albums)
+    when 6
+      puts 'Select genre below'
+      ListCreator.list_all('genres', @genres)
     end
   end
 
   def general_option(answer)
     case answer
-    when 9
+    when 7
       puts "List all genres (e.g 'Comedy', 'Thriller')"
-    when 10
+    when 8
       puts "List all labels (e.g. 'Gift', 'New')"
-    when 11
+    when 9
       puts "List all authors (e.g. 'Stephen King')"
-    when 12
+    when 10
       puts "List all sources (e.g. 'From a friend', 'Online shop')"
     else
-      'Goodbye'
+      Data.save_to_file(@music_albums, 'music_albums.json')
     end
   end
 

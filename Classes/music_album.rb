@@ -1,10 +1,10 @@
-require './item'
+require_relative './item'
 
 class MusicAlbum < Item
   attr_reader :on_spotify
 
-  def initialize(publish_date, archived, on_spotify, id: nil)
-    super(publish_date, archived, id: id)
+  def initialize(*args, on_spotify)
+    super(*args)
     @on_spotify = on_spotify
   end
 
@@ -21,8 +21,4 @@ class MusicAlbum < Item
     end
     puts "\n \n"
   end
-
-  def self.save_to_file; end
-
-  def self.read_from_file; end
 end

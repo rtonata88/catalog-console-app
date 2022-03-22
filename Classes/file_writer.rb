@@ -2,7 +2,7 @@ require 'json'
 
 # Generic FileWriter class which receives json content to write to a file
 class FileWriter
-  def initialize(file_content, filename, path: '../data/')
+  def initialize(file_content, filename, path: './data/')
     @file_content = file_content
     @datafile = path + filename
   end
