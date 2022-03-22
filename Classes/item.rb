@@ -1,24 +1,22 @@
 require 'date'
 
 class Item
-  attr_accessor :archived
+  attr_accessor :archived, :author
 
   # rubocop:disable Metrics/ParameterLists
-  def initialize(id, genre, author, source, label, publish_date, archived: false)
-    @id = id
-    @genre = genre
-    @author = author
-    @source = source
-    @label = label
-    @publish_date = publish_date
+  def initialize(publish_date, archived: false)
+    @id = Random.rand(1..1000)
+    @genre = ''
+    @author = ''
+    @source = ''
+    @label = ''
+    @publish_date = Date.parse(publish_date)
     @archived = archived
   end
 
   # rubocop:enable Metrics/ParameterLists
   def can_be_archived?
-    publish_date = Date.parse(@publish_date)
-    today = Date.today
-    today.year - publish_date.year > 10
+    return Date.today - @publish_date > (365*10)
   end
 
   def move_to_archive
