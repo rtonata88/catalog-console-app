@@ -3,14 +3,15 @@ require './Classes/list_creator'
 require './Classes/data'
 require './Classes/book'
 require './Classes/game'
+require './Classes/author'
 
 class App
   def initialize
     @books = Data.read_from_file('books.json')
     @labels = Data.read_from_file('labels.json')
-    @music_albums = Data.read_from_file('music_albums.json')
+    @music_albums = MusicAlbum.convert_to_obj(Data.read_from_file('music_albums.json'))
     @genres = Data.read_from_file('genres.json')
-    @games = Data.read_from_file('games.json')
+    @games = Game.convert_to_obj(Data.read_from_file('games.json'))
     @authors = Data.read_from_file('authors.json')
   end
 
@@ -66,7 +67,7 @@ class App
       multiplayer = gets.chomp
       print 'Last played at: '
       last_played_at = gets.chomp
-      @games << Game.new(publish_date, multiplayer, last_played_at)
+      @games << Game.new(multiplayer, last_played_at, publish_date)
       puts 'Success!'
     end
     
@@ -78,6 +79,16 @@ class App
       ListCreator.new.list_all('music_albums', @music_albums)
     when 5
       ListCreator.new.list_all('music_albums', @music_albums)
+    when 6
+      print 'On spotify[Y/N]: '
+      on_spotify_input = gets.chomp.downcase
+      on_spotify = (on_spotify_input == 'y')
+      
+      print 'Publish date (YYYY-MM-DD): '
+      publish_date = gets.chomp
+      
+      @music_albums << MusicAlbum.new(publish_date, on_spotify: on_spotify)
+      puts 'Success!'
     end
   end
 
@@ -86,17 +97,19 @@ class App
     when 6
       ListCreator.new.list_all('genres', @genres) 
     when 7
-      ListCreator.new.list_all('labels', @labels)
+      ListCreator.new.list_all('genres', @genres)
     when 8
       ListCreator.new.list_all('authors', @authors)
-    when 9
-      Data.save_to_file(@music_albums, 'music_albums.json')
+    when 10
+      puts "List all sources (e.g. 'From a friend', 'Online shop')"
+    when 11
+      Data.save_to_file(MusicAlbum.convert_to_json(@music_albums), 'music_albums.json')
       Data.save_to_file(Game.convert_to_json(@games), 'games.json')
-      Data.save_to_file(@authors, 'authors.json')
+      Data.save_to_file(Author.convert_to_json(@authors), 'authors.json')
       exit
     end
 
-     start_menu until answer == 9
+     start_menu until answer == 11
   end
 
   def run

@@ -1,5 +1,6 @@
 require_relative './file_reader'
 require_relative './file_writer'
+require_relative './music_album'
 
 class Data
   def self.save_to_file(content, file_name)
