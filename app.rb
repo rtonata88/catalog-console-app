@@ -58,7 +58,7 @@ class App
       @games << Game.new(publish_date, multiplayer, last_played_at)
       puts 'Success!'
     end
-    start_menu
+    
   end
 
   def music_option(answer)
@@ -72,6 +72,7 @@ class App
   end
 
   def general_option(answer)
+    
     case answer
     when 7
       puts "List all genres (e.g 'Comedy', 'Thriller')"
@@ -83,10 +84,12 @@ class App
       puts "List all sources (e.g. 'From a friend', 'Online shop')"
     when 11
       Data.save_to_file(@music_albums, 'music_albums.json')
-      Data.save_to_file(@games, 'games.json')
+      Data.save_to_file(Game.convert_to_json(@games), 'games.json')
       Data.save_to_file(@authors, 'authors.json')
       exit
     end
+
+     start_menu until answer == 11
   end
 
   def run
