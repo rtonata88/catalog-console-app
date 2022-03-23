@@ -59,7 +59,6 @@ class App
       @games << Game.new(multiplayer, last_played_at, publish_date)
       puts 'Success!'
     end
-    
   end
 
   def music_option(answer)
@@ -70,17 +69,16 @@ class App
       print 'On spotify[Y/N]: '
       on_spotify_input = gets.chomp.downcase
       on_spotify = (on_spotify_input == 'y')
-      
+
       print 'Publish date (YYYY-MM-DD): '
       publish_date = gets.chomp
-      
-      @music_albums << MusicAlbum.new(publish_date, on_spotify: on_spotify)
+      p on_spotify
+      @music_albums << MusicAlbum.new(publish_date, on_spotify)
       puts 'Success!'
     end
   end
 
   def general_option(answer)
-    
     case answer
     when 7
       ListCreator.new.list_all('genres', @genres)
@@ -97,7 +95,7 @@ class App
       exit
     end
 
-     start_menu until answer == 11
+    start_menu until answer == 11
   end
 
   def run

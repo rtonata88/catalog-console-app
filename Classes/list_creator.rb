@@ -22,12 +22,12 @@ class ListCreator
   end
 
   def genres(genre_list)
-     puts "\n \n"
+    puts "\n \n"
     if genre_list.length.zero?
       puts 'No genres to display'
     else
-      genre_list.each do |genre| 
-           puts "ID: #{genre["id"]}, Name: #{genre['name']}"
+      genre_list.each do |genre|
+        puts "ID: #{genre['id']}, Name: #{genre['name']}"
       end
     end
     puts "\n \n"
