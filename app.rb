@@ -104,7 +104,7 @@ class App
       Data.save_to_file(Author.convert_to_json(@authors), 'authors.json')
       exit
     end
-     start_menu until answer == 9
+    start_menu until answer == 9
   end
 
   def run
