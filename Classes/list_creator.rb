@@ -1,6 +1,4 @@
-
 class ListCreator
-
   def books(books_list)
     puts "\n \n"
     if books_list.length.zero?
@@ -32,12 +30,12 @@ class ListCreator
   end
 
   def genres(genre_list)
-     puts "\n \n"
+    puts "\n \n"
     if genre_list.length.zero?
       puts 'No genres to display'
     else
-      genre_list.each do |genre| 
-           puts "ID: #{genre["id"]}, Name: #{genre['name']}"
+      genre_list.each do |genre|
+        puts "ID: #{genre['id']}, Name: #{genre['name']}"
       end
     end
     puts "\n \n"
@@ -51,7 +49,7 @@ class ListCreator
       labels_list.map { |label| puts "Label : #{label['title']}, Color: #{label['color']}" }
     end
     puts "\n \n"
- end
+  end
 
   def authors(authors_list)
     puts "\n \n"
