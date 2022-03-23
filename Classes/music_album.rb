@@ -12,13 +12,19 @@ class MusicAlbum < Item
     super && on_spotify
   end
 
-  def self.list_all(music_albums)
-    puts "\n \n"
-    if music_albums.length.zero?
-      puts 'No music albums to display'
-    else
-      music_albums.map { |album| puts "ID: #{album.id}, On spotify: #{album.on_spotify}" }
+  def self.convert_to_json(data)
+    music_albums = []
+    data.each do |album|
+      music_albums << { id: album.id, on_spotify: album.on_spotify, publish_date: album.publish_date }
     end
-    puts "\n \n"
+    music_albums
+  end
+
+  def self.convert_to_obj(data)
+    music_albums = []
+    data.each do |album|
+      music_albums << MusicAlbum.new(album['publish_date'], album['on_spotify'])
+    end
+    music_albums
   end
 end

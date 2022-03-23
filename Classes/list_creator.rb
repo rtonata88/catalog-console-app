@@ -6,7 +6,7 @@ class ListCreator
     if music_albums.length.zero?
       puts 'No music albums to display'
     else
-      music_albums.map { |album| puts "ID: #{album['id']}, On spotify: #{album['on_spotify']}" }
+      music_albums.map { |album| puts "ID: #{album.id}, On spotify: #{album.on_spotify}" }
     end
     puts "\n \n"
   end
@@ -21,7 +21,17 @@ class ListCreator
     puts "\n \n"
   end
 
-  def genres; end
+  def genres(genre_list)
+    puts "\n \n"
+    if genre_list.length.zero?
+      puts 'No genres to display'
+    else
+      genre_list.each do |genre|
+        puts "ID: #{genre['id']}, Name: #{genre['name']}"
+      end
+    end
+    puts "\n \n"
+  end
 
   def labels; end
 
@@ -44,7 +54,7 @@ class ListCreator
     when 'games'
       games(list_array)
     when 'genres'
-      genres
+      genres(list_array)
     when 'labels'
       labels
     when 'authors'
