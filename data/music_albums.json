@@ -1,5 +1,10 @@
 [
-  "Dante",
-  "Oliver",
-  "Richard"
+  {
+    "id": 1,
+    "on_spotify": true
+  },
+  {
+    "id": 2,
+    "on_spotify": false
+  }
 ]
