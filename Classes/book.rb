@@ -11,4 +11,14 @@ class Book < Item
   def can_be_archived?
     super || @cover_state.downcase == 'bad'
   end
+
+  def self.convert_to_json(data)
+    books = []
+    data.each do |book|
+      books << { id: book.id, publisher: book.publisher, cover_state: book.cover_state,
+                         publish_date: book.publish_date }
+    end
+    games
+  end
+
 end
