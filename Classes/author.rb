@@ -14,4 +14,12 @@ class Author
     @items << item
     item.author = self
   end
+
+  def self.convert_to_json(data)
+    authors = []
+    data.each do |author|
+      authors << { first_name: author['first_name'], last_name: author['last_name']}
+    end
+    authors
+  end
 end

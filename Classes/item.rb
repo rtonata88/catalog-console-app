@@ -3,14 +3,14 @@ require 'date'
 class Item
   attr_accessor :archived, :label, :author, :id, :publish_date
 
-  def initialize(publish_date, archived: false)
-    @id = Random.rand(1..1000)
+  def initialize(publish_date, archived: false, id: nil)
     @genre = ''
     @author = ''
     @source = ''
     @label = ''
     @publish_date = Date.parse(publish_date)
     @archived = archived
+    @id = id || Random.rand(1..1000)
   end
 
   def can_be_archived?

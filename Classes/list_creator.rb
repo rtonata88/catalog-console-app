@@ -6,7 +6,7 @@ class ListCreator
     if music_albums.length.zero?
       puts 'No music albums to display'
     else
-      music_albums.map { |album| puts "ID: #{album['id']}, On spotify: #{album['on_spotify']}" }
+      music_albums.map { |album| puts "ID: #{album.id}, On spotify: #{album.on_spotify}" }
     end
     puts "\n \n"
   end
