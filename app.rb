@@ -77,8 +77,6 @@ class App
     when 4
       ListCreator.new.list_all('music_albums', @music_albums)
     when 5
-      ListCreator.new.list_all('music_albums', @music_albums)
-    when 6
       print 'On spotify[Y/N]: '
       on_spotify_input = gets.chomp.downcase
       on_spotify = (on_spotify_input == 'y')
@@ -96,7 +94,7 @@ class App
     when 6
       ListCreator.new.list_all('genres', @genres)
     when 7
-      ListCreator.new.list_all('genres', @genres)
+      ListCreator.new.list_all('labels', @labels)
     when 8
       ListCreator.new.list_all('authors', @authors)
     when 9
