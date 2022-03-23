@@ -58,7 +58,7 @@ class ListCreator
     if authors_list.length.zero?
       puts 'No authors to display'
     else
-      authors_list.map { |author| puts "First name: #{author['first_name']}, Last name: #{author['last_name']}" }
+      authors_list.map { |author| puts "First name: #{author.first_name}, Last name: #{author.last_name}" }
     end
     puts "\n \n"
   end

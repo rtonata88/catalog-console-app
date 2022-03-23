@@ -7,12 +7,12 @@ require './Classes/author'
 
 class App
   def initialize
-    @books = Data.read_from_file('books.json')
+    @books = Book.convert_to_obj(Data.read_from_file('books.json'))
     @labels = Data.read_from_file('labels.json')
     @music_albums = MusicAlbum.convert_to_obj(Data.read_from_file('music_albums.json'))
     @genres = Data.read_from_file('genres.json')
     @games = Game.convert_to_obj(Data.read_from_file('games.json'))
-    @authors = Data.read_from_file('authors.json')
+    @authors = Author.convert_to_obj(Data.read_from_file('authors.json'))
   end
 
   def start_menu
@@ -100,16 +100,15 @@ class App
       ListCreator.new.list_all('genres', @genres)
     when 8
       ListCreator.new.list_all('authors', @authors)
-    when 10
-      puts "List all sources (e.g. 'From a friend', 'Online shop')"
-    when 11
+    when 9
+      Data.save_to_file(Book.convert_to_json(@books), 'books.json')
       Data.save_to_file(MusicAlbum.convert_to_json(@music_albums), 'music_albums.json')
       Data.save_to_file(Game.convert_to_json(@games), 'games.json')
       Data.save_to_file(Author.convert_to_json(@authors), 'authors.json')
       exit
     end
 
-     start_menu until answer == 11
+     start_menu until answer == 9
   end
 
   def run
