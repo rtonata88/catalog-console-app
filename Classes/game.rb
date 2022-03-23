@@ -14,4 +14,13 @@ class Game < Item
 
     false
   end
+
+  def self.convert_to_json(data)
+    games = []
+    data.each do |game|
+      games << { id: game.id, multiplayer: game.multiplayer, last_played_at: game.last_played_at,
+                         publish_date: game.publish_date }
+    end
+    games
+  end
 end

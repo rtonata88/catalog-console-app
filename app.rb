@@ -1,7 +1,11 @@
 require './Classes/music_album'
 require './Classes/list_creator'
 require './Classes/data'
+<<<<<<< HEAD
 require './Classes/book'
+=======
+require './Classes/game'
+>>>>>>> development
 
 class App
   def initialize
@@ -59,7 +63,12 @@ class App
     when 2
       ListCreator.new.list_all('games', @games)
     when 3
+<<<<<<< HEAD
       puts 'Add a game'
+=======
+      ListCreator.new.list_all('games', @games)
+    when 4
+>>>>>>> development
       print 'Publish date: '
       publish_date = gets.chomp
       print 'Multiplayer [true/false]: '
@@ -69,7 +78,11 @@ class App
       @games << Game.new(publish_date, multiplayer, last_played_at)
       puts 'Success!'
     end
+<<<<<<< HEAD
     start_menu
+=======
+    
+>>>>>>> development
   end
 
   def music_option(answer)
@@ -77,12 +90,18 @@ class App
     when 4
       ListCreator.new.list_all('music_albums', @music_albums)
     when 5
+<<<<<<< HEAD
+=======
+      ListCreator.new.list_all('music_albums', @music_albums)
+    when 6
+>>>>>>> development
       puts 'Select genre below'
       ListCreator.new.list_all('genres', @genres)
     end
   end
 
   def general_option(answer)
+    
     case answer
     when 6
       puts "List all genres (e.g 'Comedy', 'Thriller')"
@@ -91,13 +110,26 @@ class App
     when 8
       ListCreator.new.list_all('authors', @authors)
     when 9
+<<<<<<< HEAD
       Data.save_to_file(@books, 'books.json')
       Data.save_to_file(@labels, 'label.json')
       Data.save_to_file(@music_albums, 'music_albums.json')
       Data.save_to_file(@games, 'games.json')
       Data.save_to_file(@authors, 'authors.json')
       Exit
+=======
+      ListCreator.new.list_all('authors', @authors)
+    when 10
+      puts "List all sources (e.g. 'From a friend', 'Online shop')"
+    when 11
+      Data.save_to_file(@music_albums, 'music_albums.json')
+      Data.save_to_file(Game.convert_to_json(@games), 'games.json')
+      Data.save_to_file(@authors, 'authors.json')
+      exit
+>>>>>>> development
     end
+
+     start_menu until answer == 11
   end
 
   def run
