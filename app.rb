@@ -52,7 +52,6 @@ class App
       @books << Book.new(publish_date, publisher, cover_state)
       puts 'Book created succesfully!!!'
     end
-    start_menu
   end
 
   def game_option(answer)
@@ -61,7 +60,7 @@ class App
       ListCreator.new.list_all('games', @games)
     when 3
       puts 'Add a game'
-      print 'Publish date: '
+      print 'Publish date (YYYY-MM-DD): '
       publish_date = gets.chomp
       print 'Multiplayer [true/false]: '
       multiplayer = gets.chomp
@@ -79,33 +78,25 @@ class App
       ListCreator.new.list_all('music_albums', @music_albums)
     when 5
       ListCreator.new.list_all('music_albums', @music_albums)
-    when 6
-      puts 'Select genre below'
-      ListCreator.new.list_all('genres', @genres)
     end
   end
 
   def general_option(answer)
-    
     case answer
     when 6
-      puts "List all genres (e.g 'Comedy', 'Thriller')"
+      ListCreator.new.list_all('genres', @genres) 
     when 7
       ListCreator.new.list_all('labels', @labels)
     when 8
       ListCreator.new.list_all('authors', @authors)
     when 9
-      ListCreator.new.list_all('authors', @authors)
-    when 10
-      puts "List all sources (e.g. 'From a friend', 'Online shop')"
-    when 11
       Data.save_to_file(@music_albums, 'music_albums.json')
       Data.save_to_file(Game.convert_to_json(@games), 'games.json')
       Data.save_to_file(@authors, 'authors.json')
       exit
     end
 
-     start_menu until answer == 11
+     start_menu until answer == 9
   end
 
   def run
