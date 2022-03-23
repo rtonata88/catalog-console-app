@@ -1,46 +1,7 @@
 [
   {
-    "id": 796,
-    "on_spotify": {
-      "id": 620,
-      "on_spotify": {
-        "id": 842,
-        "on_spotify": {
-          "id": 517,
-          "on_spotify": {
-            "id": 950,
-            "on_spotify": {
-              "id": 15,
-              "on_spotify": {
-                "id": 955,
-                "on_spotify": {
-                  "id": 835,
-                  "on_spotify": {
-                    "id": 333,
-                    "on_spotify": {
-                      "id": 647,
-                      "on_spotify": {
-                        "id": 764,
-                        "on_spotify": {
-                          "id": 757,
-                          "on_spotify": {
-                            "id": 914,
-                            "on_spotify": {
-                              "id": 61,
-                              "on_spotify": true
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "publish_date": "2000-02-02"
+    "id": 896,
+    "on_spotify": true,
+    "publish_date": "2000-05-01"
   }
 ]

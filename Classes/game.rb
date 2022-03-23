@@ -19,7 +19,7 @@ class Game < Item
     games = []
     data.each do |game|
       games << { id: game.id, multiplayer: game.multiplayer, last_played_at: game.last_played_at,
-                          publish_date: game.publish_date}
+                 publish_date: game.publish_date }
     end
     games
   end
@@ -27,7 +27,7 @@ class Game < Item
   def self.convert_to_obj(data)
     games = []
     data.each do |game|
-    games << Game.new(game['multiplayer'], game['last_played_at'], game['publish_date'])
+      games << Game.new(game['multiplayer'], game['last_played_at'], game['publish_date'])
     end
     games
   end
