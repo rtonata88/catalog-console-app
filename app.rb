@@ -83,8 +83,8 @@ class App
 
       print 'Publish date (YYYY-MM-DD): '
       publish_date = gets.chomp
-
-      @music_albums << MusicAlbum.new(publish_date, on_spotify: on_spotify)
+      p on_spotify
+      @music_albums << MusicAlbum.new(publish_date, on_spotify)
       puts 'Success!'
     end
   end
@@ -104,8 +104,7 @@ class App
       Data.save_to_file(Author.convert_to_json(@authors), 'authors.json')
       exit
     end
-
-    start_menu until answer == 9
+     start_menu until answer == 9
   end
 
   def run

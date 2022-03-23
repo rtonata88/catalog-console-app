@@ -23,7 +23,7 @@ class MusicAlbum < Item
   def self.convert_to_obj(data)
     music_albums = []
     data.each do |album|
-      music_albums << MusicAlbum.new(album['publish_date'], id: album['id'], on_spotify: album['on_spotify'])
+      music_albums << MusicAlbum.new(album['publish_date'], album['on_spotify'])
     end
     music_albums
   end
