@@ -66,8 +66,15 @@ class App
     when 5
       ListCreator.new.list_all('music_albums', @music_albums)
     when 6
-      puts 'Select genre below'
-      ListCreator.new.list_all('genres', @genres)
+      print 'On spotify[Y/N]: '
+      on_spotify_input = gets.chomp.downcase
+      on_spotify = (on_spotify_input == 'y')
+      
+      print 'Publish date (YYYY-MM-DD): '
+      publish_date = gets.chomp
+      
+      @music_albums << MusicAlbum.new(publish_date, on_spotify: on_spotify)
+      puts 'Success!'
     end
   end
 
@@ -75,7 +82,7 @@ class App
     
     case answer
     when 7
-      puts "List all genres (e.g 'Comedy', 'Thriller')"
+      ListCreator.new.list_all('genres', @genres)
     when 8
       puts "List all labels (e.g. 'Gift', 'New')"
     when 9
@@ -83,7 +90,7 @@ class App
     when 10
       puts "List all sources (e.g. 'From a friend', 'Online shop')"
     when 11
-      Data.save_to_file(@music_albums, 'music_albums.json')
+      Data.save_to_file(MusicAlbum.convert_to_json(@music_albums), 'music_albums.json')
       Data.save_to_file(Game.convert_to_json(@games), 'games.json')
       Data.save_to_file(@authors, 'authors.json')
       exit
