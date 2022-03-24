@@ -1,5 +1,13 @@
 class ListCreator
-  def books; end
+  def books(books_list)
+    puts "\n \n"
+    if books_list.length.zero?
+      puts 'No books to display'
+    else
+      books_list.map { |book| puts "ID: #{book.id}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}" }
+    end
+    puts "\n \n"
+  end
 
   def music_albums(music_albums)
     puts "\n \n"
@@ -33,14 +41,22 @@ class ListCreator
     puts "\n \n"
   end
 
-  def labels; end
+  def labels(labels_list)
+    puts "\n \n"
+    if labels_list.length.zero?
+      puts 'No labels to display'
+    else
+      labels_list.map { |label| puts "Label : #{label.title}, Color: #{label.color}" }
+    end
+    puts "\n \n"
+  end
 
   def authors(authors_list)
     puts "\n \n"
     if authors_list.length.zero?
       puts 'No authors to display'
     else
-      authors_list.map { |author| puts "First name: #{author['first_name']}, Last name: #{author['last_name']}" }
+      authors_list.map { |author| puts "First name: #{author.first_name}, Last name: #{author.last_name}" }
     end
     puts "\n \n"
   end
@@ -48,7 +64,7 @@ class ListCreator
   def list_all(list_type, list_array)
     case list_type
     when 'books'
-      books
+      books(list_array)
     when 'music_albums'
       music_albums(list_array)
     when 'games'
@@ -56,7 +72,7 @@ class ListCreator
     when 'genres'
       genres(list_array)
     when 'labels'
-      labels
+      labels(list_array)
     when 'authors'
       authors(list_array)
     end

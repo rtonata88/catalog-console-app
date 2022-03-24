@@ -1,5 +1,4 @@
 require_relative './item'
-
 class Author
   attr_accessor :first_name, :last_name, :items
 
@@ -18,7 +17,15 @@ class Author
   def self.convert_to_json(data)
     authors = []
     data.each do |author|
-      authors << { first_name: author['first_name'], last_name: author['last_name'] }
+      authors << { first_name: author.first_name, last_name: author.last_name }
+    end
+    authors
+  end
+
+  def self.convert_to_obj(data)
+    authors = []
+    data.each do |author|
+      authors << Author.new(author['first_name'], author['last_name'])
     end
     authors
   end
