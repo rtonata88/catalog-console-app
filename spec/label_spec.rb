@@ -5,7 +5,7 @@ require_relative '../Classes/label'
 describe 'Label' do
   before :each do
     @test_book = Book.new('Publisher', 'Cover State', '2001-01-01')
-    @test_label = Label.new('Title','color')
+    @test_label = Label.new('Title', 'color')
   end
 
   it 'Label title is set correctly' do

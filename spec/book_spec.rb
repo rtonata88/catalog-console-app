@@ -2,11 +2,10 @@ require 'rspec'
 require_relative '../Classes/book'
 require_relative '../Classes/label'
 
-
 describe 'Book' do
   before :each do
     @test_book = Book.new('Publisher', 'Cover State', '2001-01-01')
-    @test_label = Label.new('title','color')
+    @test_label = Label.new('title', 'color')
   end
 
   it "book's name is set correctly" do
