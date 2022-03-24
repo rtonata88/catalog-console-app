@@ -91,7 +91,7 @@ class App
   end
 
   def add_genre(album)
-    puts "What is the genre? "
+    puts 'What is the genre? '
     name = gets.chomp
     new_genre = Genre.new(name)
     @genres << new_genre
@@ -115,6 +115,7 @@ class App
       @games << new_game
       print 'Would you like to add an author [Y/N]: '
       return unless answer_yes?
+
       add_author(new_game)
       puts 'Success!'
     end
@@ -134,6 +135,7 @@ class App
       @music_albums << new_album
       print 'Would you like to add a genre [Y/N]: '
       return unless answer_yes?
+
       add_genre(new_album)
       puts 'Success!'
     end
