@@ -5,7 +5,7 @@ require_relative '../Classes/game'
 describe 'Author' do
   before :each do
     @test_author = Author.new('First Name', 'Last Name')
-    @test_item = Game.new('2001-01-01', true, '2000-01-01')
+    @test_item = Game.new(true, '2001-01-01', '2000-01-01')
   end
 
   it "author's first name is set correctly" do
