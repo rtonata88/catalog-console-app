@@ -1,8 +1,14 @@
 [
   {
-    "id": 782,
+    "id": 273,
     "publisher": "Oliver",
     "cover_state": "good",
     "publish_date": "2022-03-22"
+  },
+  {
+    "id": 330,
+    "publisher": "jorge",
+    "cover_state": "bad",
+    "publish_date": "2020-10-10"
   }
 ]
