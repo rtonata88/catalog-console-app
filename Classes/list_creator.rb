@@ -35,7 +35,7 @@ class ListCreator
       puts 'No genres to display'
     else
       genre_list.each do |genre|
-        puts "ID: #{genre['id']}, Name: #{genre['name']}"
+        puts "ID: #{genre.id}, Name: #{genre.name}"
       end
     end
     puts "\n \n"
