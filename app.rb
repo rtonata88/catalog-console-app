@@ -1,30 +1,33 @@
 require './Classes/music_album'
 require './Classes/list_creator'
 require './Classes/data'
+require './Classes/book'
 require './Classes/game'
 require './Classes/author'
+require './Classes/label'
 
 class App
   def initialize
+    @books = Book.convert_to_obj(Data.read_from_file('books.json'))
+    @labels = Label.convert_to_obj(Data.read_from_file('labels.json'))
     @music_albums = MusicAlbum.convert_to_obj(Data.read_from_file('music_albums.json'))
     @genres = Data.read_from_file('genres.json')
     @games = Game.convert_to_obj(Data.read_from_file('games.json'))
-    @authors = Data.read_from_file('authors.json')
+    @authors = Author.convert_to_obj(Data.read_from_file('authors.json'))
   end
 
   def start_menu
     puts "Please choose an option by entering a number:\n
-    1.- List all books
-    2.- Add a book
-    3.- List of games
-    4.- Add a game
-    5.- List all music albums
-    6.- Add a music album
-    7.- List all genres (e.g 'Comedy', 'Thriller')
-    8.- List all labels (e.g. 'Gift', 'New')
-    9.- List all authors (e.g. 'Stephen King')
-    10.- List all sources (e.g. 'From a friend', 'Online shop')
-    11.- Exit "
+    0.- List all books
+    1.- Add a book
+    2.- List of games
+    3.- Add a game
+    4.- List all music albums
+    5.- Add a music album
+    6.- List all genres (e.g 'Comedy', 'Thriller')
+    7.- List all labels (e.g. 'Gift', 'New')
+    8.- List all authors (e.g. 'Stephen King')
+    9.- Exit "
     answer = gets.chomp.to_i
     options(answer)
   end
@@ -38,19 +41,50 @@ class App
 
   def book_option(answer)
     case answer
+    when 0
+      ListCreator.new.list_all('books', @books)
     when 1
-      puts 'List all Books'
-    when 2
-      puts 'Add book option'
+      puts "Creating a new book...\n\n"
+      print 'What date was it published on? (YYYY-MM-DD) '
+      publish_date = gets.chomp
+      print 'Who was the Publisher?: '
+      publisher = gets.chomp
+      print 'What state is the cover in? '
+      cover_state = gets.chomp
+      @books << Book.new(publisher, cover_state, publish_date)
+      puts 'Book created succesfully!!!'
+      print 'Would you like to add a label [Y/N] '
+      return unless answer_yes?
+
+      add_label
     end
+  end
+
+  def answer_yes?
+    answer = gets.chomp
+    until %w[y yes n no true false].include?(answer.downcase)
+      print 'Wrong option, please enter [Y/N] '
+      answer = gets.chomp
+    end
+    %w[y yes true].include?(answer.downcase)
+  end
+
+  def add_label
+    puts "What is the label's title? "
+    title = gets.chomp
+    puts "What is the label's color? "
+    color = gets.chomp
+    @labels << Label.new(title, color)
+    puts 'Label created succesfully!!!'
   end
 
   def game_option(answer)
     case answer
-    when 3
+    when 2
       ListCreator.new.list_all('games', @games)
-    when 4
-      print 'Publish date: '
+    when 3
+      puts 'Add a game'
+      print 'Publish date (YYYY-MM-DD): '
       publish_date = gets.chomp
       print 'Multiplayer [true/false]: '
       multiplayer = gets.chomp
@@ -63,9 +97,9 @@ class App
 
   def music_option(answer)
     case answer
-    when 5
+    when 4
       ListCreator.new.list_all('music_albums', @music_albums)
-    when 6
+    when 5
       print 'On spotify[Y/N]: '
       on_spotify_input = gets.chomp.downcase
       on_spotify = (on_spotify_input == 'y')
@@ -80,22 +114,21 @@ class App
 
   def general_option(answer)
     case answer
-    when 7
+    when 6
       ListCreator.new.list_all('genres', @genres)
+    when 7
+      ListCreator.new.list_all('labels', @labels)
     when 8
-      puts "List all labels (e.g. 'Gift', 'New')"
-    when 9
       ListCreator.new.list_all('authors', @authors)
-    when 10
-      puts "List all sources (e.g. 'From a friend', 'Online shop')"
-    when 11
+    when 9
+      Data.save_to_file(Label.convert_to_json(@labels), 'labels.json')
+      Data.save_to_file(Book.convert_to_json(@books), 'books.json')
       Data.save_to_file(MusicAlbum.convert_to_json(@music_albums), 'music_albums.json')
       Data.save_to_file(Game.convert_to_json(@games), 'games.json')
       Data.save_to_file(Author.convert_to_json(@authors), 'authors.json')
       exit
     end
-
-    start_menu until answer == 11
+    start_menu until answer == 9
   end
 
   def run
