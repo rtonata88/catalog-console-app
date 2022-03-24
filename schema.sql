@@ -1,0 +1,50 @@
+
+CREATE DATABASE `catalog`
+    WITH 
+    OWNER = postgres /*insert the username of your installation here */
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1;
+
+
+CREATE TABLE IF NOT EXISTS items (
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  	publish_date DATE NOT NULL,
+  	archived BOOLEAN default false
+);
+
+CREATE TABLE music_albums (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  item_id INT REFERENCES items (id),
+  on_spotify BOOLEAN NOT NULL
+)
+
+CREATE TABLE genres (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR(20) NOT NULL
+)
+
+CREATE TABLE games (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  item_id INT REFERENCES items (id),
+  multiplayer BOOLEAN NOT NULL,
+  last_played_at DATE NOT NULL
+)
+
+CREATE TABLE authors (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  first_name VARCHAR(40) NOT NULL,
+  last_name VARCHAR(40) NOT NULL
+)
+
+CREATE TABLE books (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  item_id INT REFERENCES items (id),
+  publisher VARCHAR(50) NOT NULL,
+  cover_state VARCHAR(20) NOT NULL
+)
+
+CREATE TABLE labels (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  title VARCHAR (50) NOT NULL,
+  color VARCHAR (50) NOT NULL
+)
