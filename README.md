@@ -6,6 +6,11 @@ A simple console application written in Ruby which helps you to keep a record of
 ## Built With
 
 - Ruby
+- Rspec
+
+## Demo Video
+[Video presentation](https://drive.google.com/file/d/15haZRP4qwWjlJk8uoeNIGkXegywRIivP/view?usp=sharing)
+
 ## Getting Started
 
 **To get a local copy up and running follow these simple example steps.**

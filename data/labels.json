@@ -1,7 +1,12 @@
 [
   {
-    "id": 22,
+    "id": 25,
     "title": "Dante Collection",
     "color": "blue"
+  },
+  {
+    "id": 59,
+    "title": "Classic",
+    "color": "Brown"
   }
 ]
