@@ -51,10 +51,11 @@ class App
       publisher = gets.chomp
       print 'What state is the cover in? '
       cover_state = gets.chomp
-      @books << Book.new( publisher, cover_state, publish_date)
+      @books << Book.new(publisher, cover_state, publish_date)
       puts 'Book created succesfully!!!'
       print 'Would you like to add a label [Y/N] '
       return unless answer_yes?
+
       add_label
     end
   end
