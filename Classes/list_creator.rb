@@ -46,7 +46,7 @@ class ListCreator
     if labels_list.length.zero?
       puts 'No labels to display'
     else
-      labels_list.map { |label| puts "Label : #{label['title']}, Color: #{label['color']}" }
+      labels_list.map { |label| puts "Label : #{label.title}, Color: #{label.color}" }
     end
     puts "\n \n"
   end

@@ -1,14 +1,26 @@
 [
   {
-    "id": 273,
+    "id": 899,
     "publisher": "Oliver",
     "cover_state": "good",
     "publish_date": "2022-03-22"
   },
   {
-    "id": 330,
+    "id": 859,
     "publisher": "jorge",
     "cover_state": "bad",
     "publish_date": "2020-10-10"
+  },
+  {
+    "id": 979,
+    "publisher": "Dante",
+    "cover_state": "good",
+    "publish_date": "2022-02-02"
+  },
+  {
+    "id": 94,
+    "publisher": "Peter",
+    "cover_state": "bad",
+    "publish_date": "1985-10-10"
   }
 ]

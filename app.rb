@@ -4,11 +4,12 @@ require './Classes/data'
 require './Classes/book'
 require './Classes/game'
 require './Classes/author'
+require './Classes/label'
 
 class App
   def initialize
     @books = Book.convert_to_obj(Data.read_from_file('books.json'))
-    @labels = Data.read_from_file('labels.json')
+    @labels = Label.convert_to_obj(Data.read_from_file('labels.json'))
     @music_albums = MusicAlbum.convert_to_obj(Data.read_from_file('music_albums.json'))
     @genres = Data.read_from_file('genres.json')
     @games = Game.convert_to_obj(Data.read_from_file('games.json'))
@@ -52,7 +53,28 @@ class App
       cover_state = gets.chomp
       @books << Book.new( publisher, cover_state, publish_date)
       puts 'Book created succesfully!!!'
+      print 'Would you like to add a label [Y/N] '
+      return unless answer_yes?
+      add_label
     end
+  end
+
+  def answer_yes?
+    answer = gets.chomp
+    until %w[y yes n no true false].include?(answer.downcase)
+      print 'Wrong option, please enter [Y/N] '
+      answer = gets.chomp
+    end
+    %w[y yes true].include?(answer.downcase)
+  end
+
+  def add_label
+    puts "What is the label's title? "
+    title = gets.chomp
+    puts "What is the label's color? "
+    color = gets.chomp
+    @labels << Label.new(title, color)
+    puts 'Label created succesfully!!!'
   end
 
   def game_option(answer)
@@ -98,6 +120,7 @@ class App
     when 8
       ListCreator.new.list_all('authors', @authors)
     when 9
+      Data.save_to_file(Label.convert_to_json(@labels), 'labels.json')
       Data.save_to_file(Book.convert_to_json(@books), 'books.json')
       Data.save_to_file(MusicAlbum.convert_to_json(@music_albums), 'music_albums.json')
       Data.save_to_file(Game.convert_to_json(@games), 'games.json')
